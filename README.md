@@ -1,68 +1,51 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## MegaphoneCodeChallenge
+code challenge started on 6_5_2020
 
-## Available Scripts
+### Installation Guide
 
-In the project directory, you can run:
+`yarn install`  to install dependencies
+Runs the app with `yarn start` after the Rails backend is running locally on [http://localhost:3000](http://localhost:3000) <br />
+Open [http://localhost:3001](http://localhost:3001) to view this react application in the browser.
 
-### `yarn start`
+# Dependencies
+- `@material-ui` for navbar styling
+- `firebase` for user authentication
+- `react-router-dom` for authentication pages
+- `recompose` for authentication higher order component 
+- `papaparse` for csv file conversion
+  
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Workflow
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+1. initialized frontend React repository with workflow.md & backend repository with API
+2. created [Models.png](Models.png) for database tables & track deployables
+	2.1 figure out how I want to process the csv file.
+	I'd like to process the csv into json in the frontend & send that as a payload to the backend.
+	2.2 draw out interface for user to upload csv file, look at sketch.png
+	2.3 total sales revenue would be processed in the frontend using react
+	2.4 authentication would be through firebase, with code from my previous project
 
-### `yarn test`
+3. initialized rails api using <rails new SalesAdmin --api>
+4. change Gemfile in rails app (sqlite => pg & enable rack-cors) & run bundle install
+	4.1 change databse.yml file to use postgres & allow all access in cors.rb
+5. setup tables 
+7. create basic seed data & index route for all models
+8. run rails server & check basic routes work 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+9. initialize react application
+	9.1 use already made authentication & navbar from previous project
+10. draw out basic page [MainPage.png](MainPage.png)
+11. create basic page layout
+12. create interface for user to upload salesdata.csv file 
+13. handle information conversion in the front & send to database
+14. added filters
+15. show total sales revenue
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Scaling Notes
+- Allow merchants to track their inventory by adding a new table called Inventory, includes merchant ID, item ID, & remaining quantity
+- If a single user's salesdata becomes too large, it might be a good idea to limit # of items returned from the database & also write a method in the backend that returns total sales revenue
+- Filters may become slow as more data gets added on
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+# Technical Notes
+- If running on ubuntu, make sure to start postgresql server with <sudo service postgresql start>
