@@ -6,6 +6,7 @@ code challenge started on 6_5_2020
 `yarn install`  to install dependencies
 Runs the app with `yarn start` after the Rails backend is running locally on [http://localhost:3000](http://localhost:3000) <br />
 Open [http://localhost:3001](http://localhost:3001) to view this react application in the browser.
+Mock CSV file for challenge is [here](salesdata.csv)
 
 # Dependencies
 - `@material-ui` for navbar styling
@@ -34,7 +35,7 @@ Open [http://localhost:3001](http://localhost:3001) to view this react applicati
 
 9. initialize react application
 	9.1 use already made authentication & navbar from previous project
-10. draw out basic page [MainPage.png](MainPage.png)
+10. draw out basic page [SketchPage](MainPage.png) end results [MainPage](mainPageScreenShot.PNG)
 11. create basic page layout
 12. create interface for user to upload salesdata.csv file 
 13. handle information conversion in the front & send to database
