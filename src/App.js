@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// Components
+import NavBar from './components/NavBar';
+import HomePage from './components/HomePage';
+
+// Routes
+import { ROUTES } from './url';
+
+// Authentication
+import Authentication from './authentication/Main/Authentication.component';
+import { withAuthentication } from './authentication/Session';
+
+function App(props) {
+	return (
+		<Router>
+			<NavBar />
+			<Switch>
+				<Route exact path={ROUTES.HOMEPAGE} component={HomePage} />
+				<Authentication />
+			</Switch>
+		</Router>
+	);
 }
-
-export default App;
+export default withAuthentication(App);
